@@ -9,6 +9,8 @@ import { Theme as ShouldBeIncluded } from './components/ShouldBeIncluded/ShouldB
 import { lightColors, darkColors } from './colors';
 import getPrimaryColorInfo from './utils/getPrimaryColorInfo';
 
+export type { VariantProps } from '@stitches/react';
+
 // Only colors having color variations and corresponding alpha
 export type PrimaryColor =
   | 'neon'
