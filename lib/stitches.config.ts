@@ -5,6 +5,10 @@ import { Property } from '@stitches/react/types/css';
 import { Theme as MustNotBeIncluded } from './components/MustNotBeIncluded/MustNotBeIncluded.themes';
 import { Theme as ShouldBeIncluded } from './components/ShouldBeIncluded/ShouldBeIncluded.themes';
 
+
+import { lightColors, darkColors } from './colors';
+import getPrimaryColorInfo from './utils/getPrimaryColorInfo';
+
 // Only colors having color variations and corresponding alpha
 export type PrimaryColor =
   | 'neon'
@@ -16,6 +20,8 @@ export type PrimaryColor =
   | 'grayBlue';
 
 const defaultPrimary: PrimaryColor = 'blue';
+
+const defaultPrimaryColor = getPrimaryColorInfo(defaultPrimary, lightColors);
 
 export const colors: Record<string, Property.Color> = {
   // Semantic colors
@@ -30,8 +36,8 @@ export const colors: Record<string, Property.Color> = {
 const stitches = createStitches({
   theme: {
     colors: {
-      ...MustNotBeIncluded.getLight(),
-      ...ShouldBeIncluded.getLight(),
+      ...MustNotBeIncluded.getLight(defaultPrimaryColor),
+      ...ShouldBeIncluded.getLight(defaultPrimaryColor),
     },
     fonts: {
       rubik:
@@ -255,19 +261,25 @@ export const {
 export const utils = config.utils;
 
 export const darkTheme = (primary: PrimaryColor) => {
+  const darkPrimaryColor = getPrimaryColorInfo(primary, darkColors);
+
   return createTheme('dark', {
     colors: {
-      ...MustNotBeIncluded.getDark(),
-      ...ShouldBeIncluded.getDark(),
+      primary: darkPrimaryColor.token,
+      ...MustNotBeIncluded.getDark(darkPrimaryColor),
+      ...ShouldBeIncluded.getDark(darkPrimaryColor),
     },
   });
 };
 
 export const lightTheme = (primary: PrimaryColor) => {
+  const lightPrimaryColor = getPrimaryColorInfo(primary, lightColors);
+
   return createTheme('light', {
     colors: {
-      ...MustNotBeIncluded.getLight(),
-      ...ShouldBeIncluded.getLight(),
+      primary: lightPrimaryColor.token,
+      ...MustNotBeIncluded.getLight(lightPrimaryColor),
+      ...ShouldBeIncluded.getLight(lightPrimaryColor),
     },
   });
 };

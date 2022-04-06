@@ -1,15 +1,19 @@
+import { ColorInfo } from '../../utils/getPrimaryColorInfo';
+
 export namespace Theme {
   type Colors = {
     componentColor: string;
   };
 
-  type Factory = () => Colors;
+  type Factory = (primaryColor: ColorInfo) => Colors;
 
-  export const getLight: Factory = () => ({
-    componentColor: 'black'
+  export const getLight: Factory = (primaryColor) => ({
+    componentColor: 'black',
+    mainColor: primaryColor.value,
   });
 
-  export const getDark: Factory = () => ({
-    componentColor: 'white'
+  export const getDark: Factory = (primaryColor) => ({
+    componentColor: 'white',
+    mainColor: primaryColor.value,
   });
 }
