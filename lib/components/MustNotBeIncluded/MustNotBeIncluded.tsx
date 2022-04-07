@@ -1,15 +1,16 @@
 import React from 'react';
 import merge from 'lodash.merge';
-// import * as AvatarPrimitive from '@radix-ui/react-avatar';
 
 import { styled } from '../../stitches.config';
 
 const StyledDiv = styled('div', {});
 
-export const MustNotBeIncluded = ({ css = {}, ...props }) => {
-  return (
-    <StyledDiv {...props} css={merge(css, {})}>
-      MUST NOT BE INCLUDED
-    </StyledDiv>
-  );
-};
+export const MustNotBeIncluded = React.forwardRef<any, any>(
+  ({ css = {}, ...props }, forwardedRef) => {
+    return (
+      <StyledDiv {...props} ref={forwardedRef} css={merge(css, {})}>
+        MUST NOT BE INCLUDED
+      </StyledDiv>
+    );
+  }
+);
