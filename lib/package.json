@@ -48,10 +48,8 @@
     "use-debounce": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.4",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
+    "@babel/plugin-transform-react-pure-annotations": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-url": "^6.1.0",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-essentials": "^6.3.7",
@@ -64,11 +62,9 @@
     "@types/node": "^14.14.28",
     "@types/react": "^17.0.2",
     "@types/tinycolor2": "^1.4.3",
-    "babel-jest": "^27.5.1",
-    "babel-loader": "^8.2.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "rollup": "^2.33.1",
+    "rollup": "^2.70.1",
     "rollup-plugin-typescript2": "^0.31.2",
     "storybook-dark-mode": "^1.0.8",
     "typescript": "^4.4.3"
